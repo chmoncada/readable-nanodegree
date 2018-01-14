@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3001";
 
-// Generate a unique token for storing your bookshelf data on the backend server.
+// Generate a token for storing data on the backend server.
 let token = localStorage.token;
 if (!token) {
     token = localStorage.token = Math.random().toString(36).substr(-8);
@@ -18,9 +18,31 @@ const API = {
             return fetch(`${baseUrl}/categories`, { headers })
                 .then(requestHandler)
                 .then(data => data.categories);
-        }
+        },
+
     },
 
+    posts: {
+        getAll () {
+            console.log("deberia sacar todos los posts");
+            return fetch(`${baseUrl}/posts`, { headers })
+                .then(requestHandler);
+        },
+
+        getByCategory (category) {
+            console.log('deberia sacar los posts de');
+            console.log(category);
+            return fetch(`${baseUrl}/${category}/posts`, { headers })
+                .then(requestHandler);
+        },
+    },
+
+    comments: {
+        get(postId) {
+            return fetch(`${baseUrl}/posts/${postId}/comments`, {headers})
+                .then(requestHandler);
+        },
+    },
 
 };
 
