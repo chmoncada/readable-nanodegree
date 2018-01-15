@@ -11,17 +11,20 @@ const PostItem = function (props) {
     return (
         <div key={props.id} className="col s12">
             <div className="card" style={{marginBottom: 30}}>
-                <div className="btn-floating halfway-fab btn-large red">
+                <div className="btn-floating halfway-fab btn-large blue">
                     <Link to={{pathname: `/${props.category}/${props.id}/edit`}}>
                         <i className="material-icons">edit</i>
                     </Link>
                 </div>
+                <a className="btn-floating close-btn red">
+                    <i onClick={props.btnClick} className="material-icons">close</i>
+                </a>
                 <div className="card-content">
                     <div className="row" style={{marginBottom: 0}}>
                         <div className="col s12">
-                            <span className="new badge red" data-badge-caption={'Comments: ' + props.comments} />
                             <small className="grey-text text-lighten-1">{coloquialTime} by <b>{props.author}</b></small>
                             <p>{props.title}</p>
+                            <span className="new badge red" data-badge-caption={'Comments: ' + props.comments} />
                             <Link className="blue-text text-accent-1" to={{pathname: `/${props.category}/${props.id}`}}>Read more</Link>
                         </div>
                     </div>

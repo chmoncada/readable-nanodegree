@@ -37,6 +37,17 @@ export function sortPosts(criteria) {
     }
 }
 
+export function deletePost(postId) {
+    return dispatch => {
+        dispatch(deletePostRequest(postId));
+
+        return api.posts.delete(postId)
+            .then(post => dispatch(deletePostResult(postId, null)))
+            .catch(err => dispatch(deletePostResult(postId, err)));
+
+    }
+}
+
 function fetchPostsRequest() {
     return {
         type: types.FETCH_POSTS,
@@ -67,6 +78,23 @@ function votePostsRequest(postId) {
     return {
         type: types.POSTS_VOTE_ONE,
         pending: true,
+        postId
+    };
+}
+
+function deletePostRequest(postId) {
+    return {
+        type: types.DELETE_POST,
+        pending: true,
+        postId
+    };
+}
+
+function deletePostResult(postId, error) {
+    return {
+        type: types.DELETE_POST,
+        pending: false,
+        error,
         postId
     };
 }

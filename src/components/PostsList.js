@@ -45,6 +45,7 @@ class PostsList extends Component {
                                       timestamp={post.timestamp}
                                       comments={post.comments}
                                       onVote={(postId, positive) => this.props.votePost(postId, positive)}
+                                      btnClick={() => this.props.deletePost(post.id)}
                                       score={post.voteScore}
                             />
                         ))}

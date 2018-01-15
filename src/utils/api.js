@@ -41,6 +41,10 @@ const API = {
             return fetch(`${baseUrl}/posts/${id}`, { method: 'POST', headers, body: JSON.stringify(data) })
                 .then(requestHandler);
         },
+
+        delete(id) {
+            return fetch(`${baseUrl}/posts/${id}`, { method: 'DELETE', headers });
+        }
     },
 
     comments: {

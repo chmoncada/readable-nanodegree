@@ -70,3 +70,9 @@ body {
   line-height: 20px;
   vertical-align: top;
 }
+
+.btn-floating.close-btn {
+  position: absolute;
+  left: -20px;
+  top: -20px;
+}
