@@ -34,6 +34,11 @@ const postsReducer = function (state = initialState.posts, action) {
                 }
             }
         }
+        case types.SORTING_POSTS:
+            return {
+                ...state,
+                sortBy: action.criteria
+            };
         default:
             return state;
     }

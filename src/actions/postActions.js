@@ -30,6 +30,13 @@ export function votePost(postId, positive) {
     }
 }
 
+export function sortPosts(criteria) {
+    return {
+        type: types.SORTING_POSTS,
+        criteria
+    }
+}
+
 function fetchPostsRequest() {
     return {
         type: types.FETCH_POSTS,
