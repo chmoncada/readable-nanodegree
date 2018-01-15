@@ -26,18 +26,47 @@ body {
   overflow: hidden;
 }
 
-li {
-  float: left;
+.vote-stepper.small {
+  position: absolute;
+  left: 15px;
+  top: 2px;
 }
 
-li a {
-  display: block;
-  color: white;
+.vote-stepper > span {
+  float: none;
+  margin-left: 5px;
+  font-size: 35px;
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.vote-stepper.small > span {
+  font-size: 20px;
   text-align: center;
-  padding: 16px;
-  text-decoration: none;
+  margin-bottom: 5px;
 }
 
-li a:hover {
-  background-color: #111111;
+.vote-stepper > i {
+  font-size: 12px;
+}
+
+.vote-stepper.small > i {
+  display: none;
+}
+
+.vote-stepper .btn {
+  padding: 0 10px;
+  margin: 0 4px;
+}
+
+.vote-stepper.small .btn {
+  padding: 0 5px;
+  margin: 0 2px;
+  height: 22px;
+}
+
+.vote-stepper.small .btn > i {
+  font-size: 12px;
+  line-height: 20px;
+  vertical-align: top;
 }

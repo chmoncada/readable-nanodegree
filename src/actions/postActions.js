@@ -20,6 +20,16 @@ export function fetchPosts(category) {
     }
 }
 
+export function votePost(postId, positive) {
+    return dispatch => {
+        dispatch(votePostsRequest(postId));
+
+        return api.posts.vote(postId, positive)
+            .then(post => dispatch(votePostsResult(postId, null, post.voteScore)))
+            .catch(err => dispatch(votePostsResult(postId, err)));
+    }
+}
+
 function fetchPostsRequest() {
     return {
         type: types.FETCH_POSTS,
@@ -33,5 +43,23 @@ function fetchPostsResult(error, posts = null) {
         pending: false,
         error,
         posts
+    };
+}
+
+function votePostsResult(postId, error, score) {
+    return {
+        type: types.POSTS_VOTE_ONE,
+        pending: false,
+        error,
+        score,
+        postId
+    };
+}
+
+function votePostsRequest(postId) {
+    return {
+        type: types.POSTS_VOTE_ONE,
+        pending: true,
+        postId
     };
 }

@@ -24,15 +24,21 @@ const API = {
 
     posts: {
         getAll () {
-            console.log("deberia sacar todos los posts");
             return fetch(`${baseUrl}/posts`, { headers })
                 .then(requestHandler);
         },
 
         getByCategory (category) {
-            console.log('deberia sacar los posts de');
-            console.log(category);
             return fetch(`${baseUrl}/${category}/posts`, { headers })
+                .then(requestHandler);
+        },
+
+        vote(id, positive) {
+            const data = {
+                option: positive ? 'upVote' : 'downVote'
+            };
+
+            return fetch(`${baseUrl}/posts/${id}`, { method: 'POST', headers, body: JSON.stringify(data) })
                 .then(requestHandler);
         },
     },

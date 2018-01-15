@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 
+import PostItem from './PostItem';
+
 import * as actions from '../actions/postActions';
 
 class PostsList extends Component {
@@ -20,11 +22,23 @@ class PostsList extends Component {
 
     render() {
         if (this.props.loadingInfo) {
-            return (<div>Cargando Posts</div>);
+            return (<div>Posts Loading...</div>);
         } else {
             return (
-                <div>
-                    <p>Deberia mostrar los posts</p>
+                <div className="row">
+                    {this.props.posts.map(post => (
+                        <PostItem key={post.id}
+                                       id={post.id}
+                                       title={post.title}
+                                       category={post.category}
+                                       author={post.author}
+                                       timestamp={post.timestamp}
+                                       comments={post.comments}
+                                       onVote={(postId, positive) => this.props.votePost(postId, positive)}
+                                       score={post.voteScore}
+                        />
+                    ))}
+
                 </div>
             )
         }
@@ -42,7 +56,7 @@ function mapStateToProps({posts, categories}, ownProps) {
         || {name: 'All', path: null };
 
     return {
-        posts,
+        posts: posts.items,
         category,
     };
 }

@@ -13,6 +13,27 @@ const postsReducer = function (state = initialState.posts, action) {
                 items: pending ? [] : (posts || [])
             }
         }
+        case types.POSTS_VOTE_ONE: {
+            const { error, score, postId, pending } = action;
+
+            if (pending) {
+                return {
+                    ...state,
+                    voting: [
+                        ...state.voting,
+                        postId
+                    ],
+                    error: null
+                }
+            } else {
+                return {
+                    ...state,
+                    error,
+                    voting: state.voting.filter(item => item !== postId),
+                    items: state.items.map(item => !error && postId === item.id ? {...item, voteScore: score} : item)
+                }
+            }
+        }
         default:
             return state;
     }
