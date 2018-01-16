@@ -84,7 +84,7 @@ function votePostsRequest(postId) {
 
 function deletePostRequest(postId) {
     return {
-        type: types.DELETE_POST,
+        type: types.DELETE_ONE_POST,
         pending: true,
         postId
     };
@@ -92,7 +92,7 @@ function deletePostRequest(postId) {
 
 function deletePostResult(postId, error) {
     return {
-        type: types.DELETE_POST,
+        type: types.DELETE_ONE_POST,
         pending: false,
         error,
         postId

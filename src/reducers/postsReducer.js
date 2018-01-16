@@ -39,7 +39,7 @@ const postsReducer = function (state = initialState.posts, action) {
                 ...state,
                 sortBy: action.criteria
             };
-        case types.DELETE_POST: {
+        case types.DELETE_ONE_POST: {
             const { error, postId, pending } = action;
 
             if (pending) {

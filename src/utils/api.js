@@ -1,3 +1,6 @@
+import uuid from 'uuid/v4';
+import moment from 'moment';
+
 const baseUrl = "http://localhost:3001";
 
 // Generate a token for storing data on the backend server.
@@ -44,7 +47,37 @@ const API = {
 
         delete(id) {
             return fetch(`${baseUrl}/posts/${id}`, { method: 'DELETE', headers });
-        }
+        },
+
+        getPost(id) {
+            return fetch(`${baseUrl}/posts/${id}`, { headers })
+                .then(requestHandler);
+        },
+
+        create(title, body, author, category) {
+            const data = {
+                id: uuid(),
+                timestamp: moment.utc().valueOf(),
+                title,
+                body,
+                author,
+                category,
+            };
+
+            return fetch(`${baseUrl}/posts`, { method: 'POST', headers, body: JSON.stringify(data) })
+                .then(requestHandler);
+        },
+
+        update(id, title, body) {
+            const data = {
+                title,
+                body
+            };
+
+            return fetch(`${baseUrl}/posts/${id}`, { method: 'PUT', headers, body: JSON.stringify(data) })
+                .then(requestHandler);
+        },
+
     },
 
     comments: {
@@ -52,6 +85,43 @@ const API = {
             return fetch(`${baseUrl}/posts/${postId}/comments`, {headers})
                 .then(requestHandler);
         },
+
+        create(body, author, postId) {
+            const data = {
+                parentId: postId,
+                id: uuid(),
+                timestamp: moment.utc().valueOf(),
+                body,
+                author,
+            };
+
+            return fetch(`${baseUrl}/comments`, { method: 'POST', headers, body: JSON.stringify(data) })
+                .then(requestHandler);
+        },
+
+        update(id, body) {
+            const data = {
+                timestamp: moment.utc().valueOf(),
+                body
+            };
+
+            return fetch(`${baseUrl}/comments/${id}`, { method: 'PUT', headers, body: JSON.stringify(data) })
+                .then(requestHandler);
+        },
+
+        delete(id) {
+            return fetch(`${baseUrl}/comments/${id}`, { method: 'DELETE', headers });
+        },
+
+        vote(id, positive) {
+            const data = {
+                option: positive ? 'upVote' : 'downVote'
+            };
+
+            return fetch(`${baseUrl}/comments/${id}`, { method: 'POST', headers, body: JSON.stringify(data) })
+                .then(requestHandler);
+        },
+
     },
 
 };

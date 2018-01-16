@@ -25,6 +25,11 @@ class PostsList extends Component {
         this.props.sortPosts(criteria);
     }
 
+    createPost() {
+        console.log("deberia crear un post nuevo");
+        this.props.history.push("/new-post");
+    }
+
     render() {
         if (this.props.loadingInfo) {
             return (<div>Posts Loading...</div>);
@@ -50,6 +55,11 @@ class PostsList extends Component {
                             />
                         ))}
 
+                    </div>
+                    <div className="fixed-action-btn">
+                        <a className="btn-floating btn-large red">
+                            <i onClick={() => this.createPost()} className="large material-icons">add</i>
+                        </a>
                     </div>
                 </div>
             )
