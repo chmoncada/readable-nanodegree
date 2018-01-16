@@ -32,6 +32,12 @@ body {
   top: 2px;
 }
 
+.stepper-card-element {
+  position: absolute;
+  left: 15px;
+  top: 2px;
+}
+
 .vote-stepper > span {
   float: none;
   margin-left: 5px;
@@ -81,4 +87,10 @@ body {
   width: 100%;
   height: 10rem;
   background-color: transparent;
+}
+
+.author-detail {
+  font-size: 20px;
+  font-weight: bold;
+  display: block;
 }

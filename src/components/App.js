@@ -5,6 +5,7 @@ import '../App.css';
 import NavMenu from './NavMenu';
 import PostsList from './PostsList';
 import PostForm from './PostForm';
+import PostDetails from './PostDetails';
 
 const App = function () {
     return (
@@ -15,6 +16,7 @@ const App = function () {
                     <Route exact path="/" component={PostsList}/>
                     <Route exact path="/new-post" component={PostForm}/>
                     <Route exact path="/:category/:post/edit" component={PostForm}/>
+                    <Route exact path="/:category/:post" component={PostDetails}/>
                 </div>
 
             </div>

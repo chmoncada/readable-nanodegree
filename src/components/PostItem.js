@@ -25,12 +25,12 @@ const PostItem = function (props) {
                             <small className="grey-text text-lighten-1">{coloquialTime} by <b>{props.author}</b></small>
                             <p>{props.title}</p>
                             <span className="new badge red" data-badge-caption={'Comments: ' + props.comments} />
-                            <Link className="blue-text text-accent-1" to={{pathname: `/${props.category}/${props.id}`}}>Read more</Link>
+                            <Link className="blue-text text-accent-1" to={{pathname: `/${props.category}/${props.id}`}}>Details...</Link>
                         </div>
                     </div>
                 </div>
                 <div className="card-action" style={{marginBottom: 0}}>
-                    <VoteStepper score={props.score} disable={props.voting} onVote={p => props.onVote(props.id, p)} isSmall/>
+                    <VoteStepper className="stepper-card-element" score={props.score} disable={props.voting} onVote={p => props.onVote(props.id, p)}/>
                 </div>
             </div>
         </div>
