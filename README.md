@@ -6,7 +6,7 @@ A simple app using React/Redux/Materialize where users are able to post content 
 First, clone this repository into your machine
 
 ```shell
-git clone https://chmoncada@bitbucket.org/chmoncada/readable-nanodegree.git
+git clone https://github.com/chmoncada/readable-nanodegree.git
 ```
 
 Next, move into react-Readable folder
