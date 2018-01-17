@@ -28,15 +28,6 @@ const postFormReducer = function (state = initialState.currentPost, action) {
                 ...initialState.currentPost
             }
         }
-        case types.ORDER_POST_COMMENTS: {
-            return {
-                ...state,
-                comments: {
-                    ...state.comments,
-                    sortBy: action.criteria
-                }
-            }
-        }
         case types.DELETE_POST: {
             return {
                 ...state,

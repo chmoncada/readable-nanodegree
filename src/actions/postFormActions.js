@@ -11,13 +11,6 @@ export function fetchPost(id) {
     }
 }
 
-export function orderPostComments(criteria) {
-    return {
-        type: types.ORDER_POST_COMMENTS,
-        criteria
-    }
-}
-
 export function clearCurrentPost() {
     return {
         type: types.CLEAR_POST

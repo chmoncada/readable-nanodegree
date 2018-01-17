@@ -14,7 +14,6 @@ const initialState = {
         saving: false,
         deleting: false,
         comments: {
-            sortBy: "score",
             saving: false,
             deleting: false,
             voting: false,

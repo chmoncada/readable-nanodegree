@@ -7,6 +7,7 @@ import moment from "moment/moment";
 import { isEmptyObj} from "../utils/utils";
 
 import VoteStepper from './VoteStepper';
+import CommentsList from './CommentsList';
 
 class PostDetails extends Component {
 
@@ -28,7 +29,7 @@ class PostDetails extends Component {
 
     render() {
 
-        const { post, loading, comments } = this.props;
+        const { post, loading, comments, addComment, updateComment, deleteComment, voteComment } = this.props;
         if (loading) {
             return (<h5>Loading post details...</h5>);
         } else if (!post || isEmptyObj(post) || post.deleted) {
@@ -65,7 +66,12 @@ class PostDetails extends Component {
                         </div>
                     </div>
                 </div>
-                <span className="new badge red" data-badge-caption={'Comments: ' + commentsArray.length} />
+                <CommentsList comments={commentsArray}
+                              onCreated={(author, body) => addComment(body, author, post.id)}
+                              onSaved={(id, body) => updateComment(id, body)}
+                              onVoted={(id, positive) => voteComment(id, positive)}
+                              onDeleted={id => deleteComment(id)}
+                />
             </div>
         )
     }
